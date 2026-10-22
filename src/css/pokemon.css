@@ -1,0 +1,174 @@
+/* Paleta dos tipos: cada tipo define a cor de fundo e a cor de texto,
+   para que o contraste fique adequado sem depender de cálculo em runtime. */
+.type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border: 1px solid #0003;
+  border-radius: 3px;
+  background: var(--type-bg, #9099a1);
+  color: var(--type-ink, #fff);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.type-normal   { --type-bg: #6f7a84; --type-ink: #fff; }
+.type-fire     { --type-bg: #c4471a; --type-ink: #fff; }
+.type-water    { --type-bg: #2a6fc0; --type-ink: #fff; }
+.type-grass    { --type-bg: #3b8b36; --type-ink: #fff; }
+.type-electric { --type-bg: #f2cb33; --type-ink: #3d3300; }
+.type-ice      { --type-bg: #83ddd4; --type-ink: #0d3b37; }
+.type-fighting { --type-bg: #a32e45; --type-ink: #fff; }
+.type-poison   { --type-bg: #7c3f96; --type-ink: #fff; }
+.type-ground   { --type-bg: #9b6b2c; --type-ink: #fff; }
+.type-flying   { --type-bg: #5d78b8; --type-ink: #fff; }
+.type-psychic  { --type-bg: #c43b63; --type-ink: #fff; }
+.type-bug      { --type-bg: #6d8c1c; --type-ink: #fff; }
+.type-rock     { --type-bg: #8a7a46; --type-ink: #fff; }
+.type-ghost    { --type-bg: #4a4a7d; --type-ink: #fff; }
+.type-dark     { --type-bg: #3f3a45; --type-ink: #fff; }
+.type-dragon   { --type-bg: #2456a8; --type-ink: #fff; }
+.type-steel    { --type-bg: #5d7d8c; --type-ink: #fff; }
+.type-typeless { --type-bg: #8a9099; --type-ink: #fff; }
+
+/* Sprites em pixel art: ampliar sem interpolação. */
+.pixel-sprite {
+  image-rendering: pixelated;
+}
+
+/* Barras de atributo */
+.stat-track {
+  overflow: hidden;
+  height: 9px;
+  border: 1px solid #94a3b8;
+  border-radius: 2px;
+  background: #e2e8e0;
+  box-shadow: inset 0 1px 1px #0000001a;
+}
+
+.stat-fill {
+  height: 100%;
+  border-right: 1px solid #0003;
+  background: var(--stat-color, #475569);
+  transition: width 320ms ease-out;
+}
+
+.stat-low    { --stat-color: #c2410c; }
+.stat-medium { --stat-color: #ca8a04; }
+.stat-high   { --stat-color: #15803d; }
+
+/* Linha da lista, no espírito dos menus do DS */
+.pokedex-row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 6px 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.pokedex-row:hover {
+  background: #e7efe4;
+  border-color: #b9ccb4;
+}
+
+.pokedex-row[aria-pressed='true'] {
+  background: #dce9f7;
+  border-color: #7aa3cc;
+  box-shadow: inset 0 0 0 1px #ffffffaa;
+}
+
+/* Seta de seleção, como o cursor dos menus do jogo */
+.pokedex-row[aria-pressed='true']::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #b6393e;
+  transform: translateY(-50%);
+  animation: cursor-nudge 900ms ease-in-out infinite alternate;
+}
+
+@keyframes cursor-nudge {
+  from { transform: translateY(-50%) translateX(0); }
+  to   { transform: translateY(-50%) translateX(2px); }
+}
+
+/* Barra rolável com aparência discreta dentro da tela do console */
+.console-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9aa8a0 transparent;
+  overscroll-behavior: contain;
+}
+
+.console-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.console-scroll::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 6px;
+  background-clip: content-box;
+  background-color: #9aa8a0;
+}
+
+/* Insígnias dos treinadores */
+.badge-pip {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #8a6d1f;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fde68a, #d99e14 70%, #a97c0c);
+}
+
+.badge-pip--empty {
+  border-color: #b4bcc2;
+  background: #dfe3e6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-fill,
+  .pokedex-row {
+    transition: none;
+  }
+
+  .pokedex-row[aria-pressed='true']::before {
+    animation: none;
+  }
+}
+
+/* Pokébola neutra exibida quando nenhum sprite da PokéAPI carrega.
+   Mede-se pelas classes de tamanho do componente, por isso usa `inset` em %. */
+.sprite-placeholder {
+  position: relative;
+  display: block;
+  border: 3px solid #94a3b8;
+  border-radius: 50%;
+  background: linear-gradient(#cbd5e1 46%, #94a3b8 46%, #94a3b8 54%, #f1f5f9 54%);
+}
+
+.sprite-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 28%;
+  border: 3px solid #94a3b8;
+  border-radius: 50%;
+  background: #f1f5f9;
+}
