@@ -6,7 +6,7 @@ seleção e sprites em pixel art.
 
 Atividade 03 da disciplina Desenvolvimento e Integração de Aplicações Web (DIAW) -PUC Minas.
 
-## Imagem
+## Tela
 
 ![A Pokédex rodando](./src/assets/images/img-pokedex.png)
 
@@ -25,10 +25,6 @@ ficam salvos e aparecem para todo mundo que abrir a página.
 Os dados dos Pokémon ficam num arquivo dentro do projeto, então a parte
 principal funciona mesmo sem internet. As imagens e as descrições vêm da
 PokéAPI, e os favoritos de um banco Supabase.
-
-## Telas
-
-![A Pokédex rodando](src/assets/images/screenshot.png)
 
 ## De onde vêm os dados
 
