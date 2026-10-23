@@ -5,13 +5,19 @@
 const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 const API_BASE = 'https://pokeapi.co/api/v2'
 
-/** Sprite de HeartGold/SoulSilver: a referência visual do projeto. */
-export function spriteUrl(pokemonId: number): string {
-  return `${SPRITE_BASE}/versions/generation-iv/heartgold-soulsilver/${pokemonId}.png`
+const HGSS_BASE = `${SPRITE_BASE}/versions/generation-iv/heartgold-soulsilver`
+
+export type SpriteOptions = {
+  shiny?: boolean
 }
 
-export function fallbackSpriteUrl(pokemonId: number): string {
-  return `${SPRITE_BASE}/${pokemonId}.png`
+/** Sprite de HeartGold/SoulSilver: a referência visual do projeto. */
+export function spriteUrl(pokemonId: number, { shiny }: SpriteOptions = {}): string {
+  return shiny ? `${HGSS_BASE}/shiny/${pokemonId}.png` : `${HGSS_BASE}/${pokemonId}.png`
+}
+
+export function fallbackSpriteUrl(pokemonId: number, { shiny }: SpriteOptions = {}): string {
+  return shiny ? `${SPRITE_BASE}/shiny/${pokemonId}.png` : `${SPRITE_BASE}/${pokemonId}.png`
 }
 
 type SpeciesResponse = {

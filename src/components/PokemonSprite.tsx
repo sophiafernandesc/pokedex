@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useShiny } from '../context/shiny'
 import { fallbackSpriteUrl, spriteUrl } from '../services/pokeapi'
 
 type PokemonSpriteProps = {
@@ -13,6 +14,7 @@ type PokemonSpriteProps = {
  * arte de HeartGold/SoulSilver -> sprite padrão -> emblema de Pokébola.
  */
 export default function PokemonSprite({ pokemonId, name, size, decorative }: PokemonSpriteProps) {
+  const shiny = useShiny()
   const [failure, setFailure] = useState<{ pokemonId: number; stage: number } | null>(null)
   const stage = failure?.pokemonId === pokemonId ? failure.stage : 0
 
@@ -23,15 +25,15 @@ export default function PokemonSprite({ pokemonId, name, size, decorative }: Pok
       <span
         aria-hidden="true"
         className={`sprite-placeholder ${dimension} shrink-0`}
-        title={`Sprite de ${name} indisponível`}
+        title={`${name} sprite unavailable`}
       />
     )
   }
 
   return (
     <img
-      src={stage === 0 ? spriteUrl(pokemonId) : fallbackSpriteUrl(pokemonId)}
-      alt={decorative ? '' : `Sprite de ${name}`}
+      src={stage === 0 ? spriteUrl(pokemonId, { shiny }) : fallbackSpriteUrl(pokemonId, { shiny })}
+      alt={decorative ? '' : `${shiny ? 'Shiny ' : ''}${name} sprite`}
       aria-hidden={decorative ? 'true' : undefined}
       width={size === 'large' ? 128 : 44}
       height={size === 'large' ? 128 : 44}

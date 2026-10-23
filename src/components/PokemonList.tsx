@@ -21,16 +21,16 @@ export default function PokemonList({
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-3 p-6 text-center">
         <span aria-hidden="true" className="sprite-placeholder h-16 w-16 opacity-70" />
-        <p className="text-sm font-bold text-slate-800">Nenhum Pokémon encontrado.</p>
-        <p className="max-w-xs text-xs leading-relaxed text-slate-600">
-          Tente outro nome, outro número ou remova o filtro de tipo.
+        <p className="text-sm font-bold text-ink-mid">No Pokémon found.</p>
+        <p className="max-w-xs text-xs leading-relaxed text-ink-muted">
+          Try another name, another number, or clear the type filter.
         </p>
         <button
           type="button"
           onClick={onClearFilters}
-          className="rounded border border-slate-400 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
+          className="rounded border border-edge-strong bg-surface px-3 py-1.5 text-xs font-bold text-ink-soft transition hover:bg-panel"
         >
-          Limpar pesquisa e filtros
+          Clear search and filters
         </button>
       </div>
     )

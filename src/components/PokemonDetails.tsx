@@ -23,9 +23,9 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
       <div className="screen-grid flex flex-1 flex-col items-center justify-center gap-4 px-5 py-8 text-center">
         <span aria-hidden="true" className="pokeball-emblem" />
         <div>
-          <h2 className="text-lg font-semibold">Seu próximo encontro</h2>
-          <p className="mt-2 max-w-xs text-sm leading-relaxed text-slate-600">
-            Escolha um Pokémon na tela de baixo para ver seus atributos aqui.
+          <h2 className="text-lg font-semibold">Your next encounter</h2>
+          <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink-muted">
+            Pick a Pokémon on the bottom screen to see its stats here.
           </p>
         </div>
       </div>
@@ -38,36 +38,36 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
         <PokemonSprite pokemonId={pokemon.id} name={pokemon.name} size="large" />
 
         <div className="min-w-0 flex-1">
-          <p className="font-mono text-xs font-bold tabular-nums text-slate-500">
+          <p className="font-mono text-xs font-bold tabular-nums text-ink-faint">
             {formatPokedexNumber(pokemon.id)}
           </p>
-          <h2 className="text-2xl font-bold leading-tight text-slate-900">{pokemon.name}</h2>
+          <h2 className="text-2xl font-bold leading-tight text-ink">{pokemon.name}</h2>
 
           <div className="mt-2 flex flex-wrap gap-1">
             <TypeList types={pokemon.types} />
           </div>
 
-          <p className="mt-3 min-h-[2.5rem] text-xs leading-relaxed text-slate-600">
-            {status === 'loading' && <span className="italic text-slate-400">Consultando a PokéAPI…</span>}
+          <p className="mt-3 min-h-[2.5rem] text-xs leading-relaxed text-ink-muted">
+            {status === 'loading' && <span className="italic text-ink-dim">Asking the PokéAPI…</span>}
             {status === 'success' && description !== null && description}
             {status === 'success' && description === null && (
-              <span className="italic text-slate-400">A PokéAPI não tem descrição para este Pokémon.</span>
+              <span className="italic text-ink-dim">The PokéAPI has no description for this Pokémon.</span>
             )}
             {status === 'error' && (
-              <span className="italic text-slate-400">
-                Descrição indisponível — sem conexão com a PokéAPI. Os atributos abaixo vêm do arquivo local.
+              <span className="italic text-ink-dim">
+                Description unavailable — no connection to the PokéAPI. The stats below come from the local file.
               </span>
             )}
           </p>
         </div>
       </div>
 
-      <div className="mt-4 border-t border-slate-300 pt-3">
+      <div className="mt-4 border-t border-edge pt-3">
         <div className="mb-2 flex items-baseline justify-between">
-          <h3 className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-slate-600">
-            Atributos
+          <h3 className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">
+            Stats
           </h3>
-          <p className="font-mono text-[0.65rem] font-bold tabular-nums text-slate-600">
+          <p className="font-mono text-[0.65rem] font-bold tabular-nums text-ink-muted">
             Total {statTotal(pokemon)}
           </p>
         </div>

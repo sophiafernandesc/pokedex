@@ -1,4 +1,4 @@
-export type ConsoleMode = 'pokedex' | 'trainers'
+export type ConsoleMode = 'pokedex' | 'related' | 'trainers'
 
 type ModeTabsProps = {
   mode: ConsoleMode
@@ -7,13 +7,13 @@ type ModeTabsProps = {
 
 const TABS: { value: ConsoleMode; label: string }[] = [
   { value: 'pokedex', label: 'Pokédex' },
-  { value: 'trainers', label: 'Treinadores' },
+  { value: 'related', label: 'Related' },
+  { value: 'trainers', label: 'Trainers' },
 ]
 
-/** Navegação entre os dois modos da tela inferior. */
 export default function ModeTabs({ mode, onModeChange }: ModeTabsProps) {
   return (
-    <div role="tablist" aria-label="Modos da Pokédex" className="flex gap-1">
+    <div role="tablist" aria-label="Pokédex modes" className="flex gap-1">
       {TABS.map((tab) => (
         <button
           key={tab.value}
@@ -27,8 +27,8 @@ export default function ModeTabs({ mode, onModeChange }: ModeTabsProps) {
           }}
           className={`rounded-t border border-b-0 px-3 py-1.5 text-xs font-bold transition ${
             mode === tab.value
-              ? 'border-[#8e272b] bg-[#b6393e] text-white'
-              : 'border-slate-400 bg-slate-200 text-slate-600 hover:bg-slate-100'
+              ? 'border-accent-dark bg-accent text-accent-ink'
+              : 'border-edge-strong bg-panel-strong text-ink-muted hover:bg-panel'
           }`}
         >
           {tab.label}
