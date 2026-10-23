@@ -179,3 +179,48 @@
     animation: none;
   }
 }
+
+/* Estrela de favorito */
+.favorite-star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-ink-faint);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.favorite-star:hover:not(:disabled) {
+  background: var(--row-hover);
+  color: var(--star);
+}
+
+.favorite-star.is-active {
+  color: var(--star);
+}
+
+.favorite-star:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.favorite-star:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .favorite-star {
+    transition: none;
+  }
+
+  .favorite-star:active:not(:disabled) {
+    transform: none;
+  }
+}

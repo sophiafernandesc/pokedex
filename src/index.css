@@ -63,6 +63,7 @@
     --row-select-edge: #7aa3cc;
     --row-select-gloss: #ffffffaa;
     --cursor: #b6393e;
+  --star: #d98324;
     --scroll-thumb: #9aa8a0;
     --pip: radial-gradient(circle at 35% 30%, #fde68a, #d99e14 70%, #a97c0c);
     --pip-edge: #8a6d1f;
@@ -142,6 +143,7 @@
     --row-select-edge: #4f8db5;
     --row-select-gloss: #ffffff1a;
     --cursor: #e4656a;
+  --star: #f0b429;
 
     --scroll-thumb: #4b5f6e;
 

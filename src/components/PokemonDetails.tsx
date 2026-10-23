@@ -1,6 +1,7 @@
 import { usePokemonDescription } from '../hooks/usePokemonDescription'
 import type { Pokemon } from '../types/pokedex'
 import { STAT_LABELS, formatPokedexNumber, statTotal } from '../utils/pokemon'
+import FavoriteButton from './FavoriteButton'
 import PokemonSprite from './PokemonSprite'
 import StatBar from './StatBar'
 import TypeList from './TypeList'
@@ -41,7 +42,10 @@ export default function PokemonDetails({ pokemon }: PokemonDetailsProps) {
           <p className="font-mono text-xs font-bold tabular-nums text-ink-faint">
             {formatPokedexNumber(pokemon.id)}
           </p>
-          <h2 className="text-2xl font-bold leading-tight text-ink">{pokemon.name}</h2>
+          <div className="flex items-center gap-1">
+            <h2 className="text-2xl font-bold leading-tight text-ink">{pokemon.name}</h2>
+            <FavoriteButton pokemonId={pokemon.id} name={pokemon.name} />
+          </div>
 
           <div className="mt-2 flex flex-wrap gap-1">
             <TypeList types={pokemon.types} />
