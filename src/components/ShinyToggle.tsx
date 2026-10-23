@@ -10,7 +10,7 @@ export default function ShinyToggle({ isShiny, onToggle }: ShinyToggleProps) {
       type="button"
       onClick={onToggle}
       aria-pressed={isShiny}
-      title={isShiny ? 'Mostrando sprites shiny' : 'Mostrando sprites normais'}
+      title={isShiny ? 'Showing shiny sprites' : 'Showing regular sprites'}
       className={`flex items-center gap-1 rounded border px-3 py-1.5 text-xs font-bold transition ${
         isShiny
           ? 'border-select-edge bg-select text-ink'

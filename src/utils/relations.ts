@@ -46,11 +46,11 @@ function sameTypesGroup(target: Pokemon, pokemonList: Pokemon[]): RelatedGroup |
         return null
     }
 
-    const label = [...targetTypes].join(' e ')
+    const label = [...targetTypes].join(' and ')
     return {
         key: 'types',
-        title: `Também do tipo ${label}`,
-        hint: 'Mais tipos em comum primeiro, depois os mais próximos na numeração.',
+        title: `Also ${label} type`,
+        hint: 'Most shared types first, then the closest by number.',
         pokemon: matches.slice(0, MAX_PER_GROUP),
         total: matches.length,
     }
@@ -71,11 +71,11 @@ function trainerGroups(
 
             return {
                 key: `trainer-${trainer.id}`,
-                title: `No time de ${trainer.name}`,
+                title: `On ${trainer.name}'s team`,
                 hint:
                     team.length === 0
-                        ? `${target.name} é o único Pokémon de ${trainer.name} no arquivo.`
-                        : `Ao lado de ${target.name} na equipe.`,
+                        ? `${target.name} is ${trainer.name}'s only Pokémon in the file.`
+                        : `Alongside ${target.name} on the team.`,
                 pokemon: team,
                 total: team.length,
             }
@@ -100,8 +100,8 @@ function neighborsGroup(target: Pokemon, pokemonList: Pokemon[]): RelatedGroup |
 
     return {
         key: 'neighbors',
-        title: 'Vizinhos na Pokédex',
-        hint: 'Os registros imediatamente antes e depois.',
+        title: 'Pokédex neighbors',
+        hint: 'The entries right before and after.',
         pokemon: neighbors,
         total: neighbors.length,
     }

@@ -11,7 +11,7 @@ export default function SearchBar({ query, onQueryChange, resultCount }: SearchB
   return (
     <div className="flex flex-col gap-1">
       <label htmlFor="pokemon-search" className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">
-        Pesquisar
+        Search
       </label>
 
       <div className="flex items-center gap-2">
@@ -32,7 +32,7 @@ export default function SearchBar({ query, onQueryChange, resultCount }: SearchB
               onClick={() => {
                 onQueryChange('')
               }}
-              aria-label="Limpar pesquisa"
+              aria-label="Clear search"
               className="absolute right-1 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded text-ink-faint transition hover:bg-panel-strong hover:text-ink-mid"
             >
               ×

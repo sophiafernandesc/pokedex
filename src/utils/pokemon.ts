@@ -6,23 +6,23 @@ export const MAX_STAT = 255
 /** Ordem e rótulos dos seis atributos obrigatórios. */
 export const STAT_LABELS: { key: StatKey; label: string; short: string }[] = [
   { key: 'hp', label: 'HP', short: 'HP' },
-  { key: 'attack', label: 'Ataque', short: 'ATK' },
-  { key: 'defense', label: 'Defesa', short: 'DEF' },
-  { key: 'specialAttack', label: 'Ataque Especial', short: 'SP.ATK' },
-  { key: 'specialDefense', label: 'Defesa Especial', short: 'SP.DEF' },
-  { key: 'speed', label: 'Velocidade', short: 'VEL' },
+  { key: 'attack', label: 'Attack', short: 'ATK' },
+  { key: 'defense', label: 'Defense', short: 'DEF' },
+  { key: 'specialAttack', label: 'Special Attack', short: 'SP.ATK' },
+  { key: 'specialDefense', label: 'Special Defense', short: 'SP.DEF' },
+  { key: 'speed', label: 'Speed', short: 'SPD' },
 ]
 
 export const SORT_OPTIONS = [
-  { value: 'id', label: 'Número' },
-  { value: 'name', label: 'Nome' },
+  { value: 'id', label: 'Number' },
+  { value: 'name', label: 'Name' },
   { value: 'hp', label: 'HP' },
-  { value: 'attack', label: 'Ataque' },
-  { value: 'defense', label: 'Defesa' },
-  { value: 'specialAttack', label: 'Ataque Especial' },
-  { value: 'specialDefense', label: 'Defesa Especial' },
-  { value: 'speed', label: 'Velocidade' },
-  { value: 'total', label: 'Total de atributos' },
+  { value: 'attack', label: 'Attack' },
+  { value: 'defense', label: 'Defense' },
+  { value: 'specialAttack', label: 'Special Attack' },
+  { value: 'specialDefense', label: 'Special Defense' },
+  { value: 'speed', label: 'Speed' },
+  { value: 'total', label: 'Stat total' },
 ] as const
 
 export type SortValue = (typeof SORT_OPTIONS)[number]['value']
@@ -72,7 +72,7 @@ function compare(a: Pokemon, b: Pokemon, sortBy: SortValue): number {
     case 'id':
       return a.id - b.id
     case 'name':
-      return a.name.localeCompare(b.name, 'pt-BR')
+      return a.name.localeCompare(b.name, 'en')
     case 'total':
       return statTotal(b) - statTotal(a) || a.id - b.id
     default:

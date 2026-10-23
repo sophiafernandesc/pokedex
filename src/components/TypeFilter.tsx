@@ -10,7 +10,7 @@ export default function TypeFilter({ types, selectedTypeId, onSelectType }: Type
   return (
     <div className="flex flex-col gap-1">
       <p id="type-filter-label" className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">
-        Filtrar por tipo
+        Filter by type
       </p>
 
       <div aria-labelledby="type-filter-label" role="group" className="flex gap-1 overflow-x-auto pb-1.5 sm:flex-wrap sm:overflow-x-visible sm:pb-0">
@@ -26,7 +26,7 @@ export default function TypeFilter({ types, selectedTypeId, onSelectType }: Type
               : 'border-edge-strong bg-surface text-ink-soft hover:bg-panel'
           }`}
         >
-          Todos
+          All
         </button>
 
         {types.map((type) => {

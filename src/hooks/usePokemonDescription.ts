@@ -33,7 +33,7 @@ export function usePokemonDescription(pokemonId: number | null): DescriptionStat
         if (controller.signal.aborted) {
           return
         }
-        console.warn('Não foi possível carregar a descrição na PokéAPI:', error)
+        console.warn('Could not load the description from the PokéAPI:', error)
         setLoaded({ pokemonId, description: null, failed: true })
       })
 
