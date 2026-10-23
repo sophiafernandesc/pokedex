@@ -10,7 +10,7 @@ type SearchBarProps = {
 export default function SearchBar({ query, onQueryChange, resultCount }: SearchBarProps) {
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor="pokemon-search" className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-slate-600">
+      <label htmlFor="pokemon-search" className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">
         Pesquisar
       </label>
 
@@ -23,9 +23,8 @@ export default function SearchBar({ query, onQueryChange, resultCount }: SearchB
             onChange={(event) => {
               onQueryChange(event.target.value)
             }}
-            placeholder="Nome ou número... ex.: Bulba, 25"
             autoComplete="off"
-            className="w-full rounded border border-slate-400 bg-white py-1.5 pl-2.5 pr-8 text-sm text-slate-900 shadow-inner placeholder:text-slate-400"
+            className="w-full rounded border border-edge-strong bg-surface py-1.5 pl-2.5 pr-8 text-sm text-ink shadow-inner placeholder:text-ink-dim"
           />
           {query !== '' && (
             <button
@@ -34,14 +33,14 @@ export default function SearchBar({ query, onQueryChange, resultCount }: SearchB
                 onQueryChange('')
               }}
               aria-label="Limpar pesquisa"
-              className="absolute right-1 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded text-slate-500 transition hover:bg-slate-200 hover:text-slate-800"
+              className="absolute right-1 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded text-ink-faint transition hover:bg-panel-strong hover:text-ink-mid"
             >
               ×
             </button>
           )}
         </div>
 
-        <p aria-live="polite" className="shrink-0 font-mono text-[0.65rem] font-bold tabular-nums text-slate-600">
+        <p aria-live="polite" className="shrink-0 font-mono text-[0.65rem] font-bold tabular-nums text-ink-muted">
           {resultCount === 1 ? '1 Pokémon' : `${resultCount} Pokémon`}
         </p>
       </div>

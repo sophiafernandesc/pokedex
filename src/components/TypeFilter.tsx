@@ -9,7 +9,7 @@ type TypeFilterProps = {
 export default function TypeFilter({ types, selectedTypeId, onSelectType }: TypeFilterProps) {
   return (
     <div className="flex flex-col gap-1">
-      <p id="type-filter-label" className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-slate-600">
+      <p id="type-filter-label" className="font-mono text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">
         Filtrar por tipo
       </p>
 
@@ -22,8 +22,8 @@ export default function TypeFilter({ types, selectedTypeId, onSelectType }: Type
           }}
           className={`rounded border px-2 py-1 text-[0.65rem] font-bold uppercase tracking-wide transition ${
             selectedTypeId === null
-              ? 'border-slate-700 bg-slate-700 text-white'
-              : 'border-slate-400 bg-white text-slate-700 hover:bg-slate-100'
+              ? 'border-pill bg-pill text-pill-ink'
+              : 'border-edge-strong bg-surface text-ink-soft hover:bg-panel'
           }`}
         >
           Todos
@@ -41,7 +41,7 @@ export default function TypeFilter({ types, selectedTypeId, onSelectType }: Type
               }}
               className={`type-badge type-${type.name.toLowerCase()} transition ${
                 isSelected
-                  ? 'ring-2 ring-slate-800 ring-offset-1'
+                  ? 'ring-2 ring-ink-mid ring-offset-1 ring-offset-ring-gap'
                   : 'opacity-70 hover:opacity-100'
               }`}
             >
